@@ -1,4 +1,4 @@
-defmodule Computorv1 do
+defmodule Computorv1.CLI do
   @moduledoc """
   Documentation for `Computorv1`.
   """
@@ -12,7 +12,7 @@ defmodule Computorv1 do
       :world
 
   """
-  def hello do
-    :world
+  def main(_args) do
+    IO.puts("Hello world!")
   end
 end
