@@ -3,7 +3,7 @@ defmodule Computorv1.MixProject do
 
   def project do
     [
-      app: :computorv1,
+      app: :computor,
       version: "0.1.0",
       elixir: "~> 1.18",
       escript: escript()
