@@ -4,18 +4,25 @@ defmodule Parser do
   and if equation is valid.
   """
   def parse(expression) do
-    split_terms(expression)
-    |> validate_terms()
+    validate_terms(expression)
+    |> split_terms()
   end
 
   defp split_terms(expression) do
-    # TODO: add equals and detect when it was left or right hand side
+    # TODO: add equals and split it in left and right hand side
     String.split(expression, ["+", "-", "*", "/"], trim: true)
     |> Enum.map(&String.replace(&1, " ", ""))
     |> IO.inspect()
   end
 
   defp validate_terms(terms) do
-    terms
+    # TODO: this function should validate a valid polynomial equation
+    # before follow to another steps
+    if String.contains?(terms, "=") do
+      terms
+    else
+      IO.puts(:standard_error, "Input must be a valid polynomial equation.")
+      System.halt(2)
+    end
   end
 end

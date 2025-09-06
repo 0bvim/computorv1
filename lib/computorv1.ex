@@ -16,13 +16,17 @@ defmodule Computorv1.CLI do
     -0.475131
   """
   def main([poly]) do
-    IO.puts("Received poly:")
+    IO.puts("Received poly equations:")
     Parser.parse(poly)
     IO.puts(poly)
   end
 
   def main(_args) do
-    IO.puts(:standard_error, "☣️Error: This script requires exactly one string argument.")
+    IO.puts(
+      :standard_error,
+      "☣️Error: This script requires exactly one string argument and it must be a polynomial equation."
+    )
+
     System.halt(1)
   end
 end
