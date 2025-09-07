@@ -11,7 +11,7 @@ defmodule Computorv1.MixProject do
   end
 
   def escript do
-    [main_module: Computorv1.CLI]
+    [main_module: Computorv1]
   end
 
   # Run "mix help compile.app" to learn about applications.

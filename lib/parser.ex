@@ -12,7 +12,6 @@ defmodule Parser do
     # TODO: add equals and split it in left and right hand side
     String.split(expression, ["+", "-", "*", "/"], trim: true)
     |> Enum.map(&String.replace(&1, " ", ""))
-    |> IO.inspect()
   end
 
   defp validate_terms(terms) do
@@ -21,8 +20,7 @@ defmodule Parser do
     if String.contains?(terms, "=") do
       terms
     else
-      IO.puts(:standard_error, "Input must be a valid polynomial equation.")
-      System.halt(2)
+      {:error, "Input must be a valid polynomial equation."}
     end
   end
 end
