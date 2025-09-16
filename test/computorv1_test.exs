@@ -7,10 +7,19 @@ defmodule Computorv1Test do
       assert Computorv1.run("1x = 1x")
     end
 
-    test "valid empty input" do
-      assert Computorv1.run() ==
-               {:error,
-                "This program requires exactly one string argument and it must be a polynomial equation."}
+    test "empty input" do
+      assert Computorv1.run([]) ==
+               {:error, Constants.error_message()}
+    end
+
+    test "invalid empty string input" do
+      assert Computorv1.run("") ==
+               {:error, Constants.error_message()}
+    end
+
+    test "invalid empty string in a list input" do
+      assert Computorv1.run([""]) ==
+               {:error, Constants.error_message()}
     end
   end
 end

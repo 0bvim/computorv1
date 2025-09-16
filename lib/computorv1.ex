@@ -4,7 +4,7 @@ defmodule Computorv1 do
   """
 
   @doc """
-  main to parse and solve equations
+  Parse and solve polynomial equations from first and second degree.
 
   ## Examples
 
@@ -19,11 +19,9 @@ defmodule Computorv1 do
     case run(args) do
       {:ok, message} ->
         IO.puts(message)
-        System.halt(0)
 
       {:error, reason} ->
         IO.puts(:standard_error, "Error: #{reason}")
-        System.halt(1)
     end
   end
 
@@ -31,14 +29,18 @@ defmodule Computorv1 do
   Contains the core logic of the application.
   It returns a value instead of exiting, making it easy to test.
   """
-  def run() do
-    # Error case: NO arguments provided
-    {:error,
-     "This program requires exactly one string argument and it must be a polynomial equation."}
+  def run([expression]) when expression != "" do
+    IO.puts("Received poly equation:")
+
+    Parser.parse(expression)
   end
 
-  def run(args) do
-    IO.puts("Received poly equation:")
-    Parser.parse(args)
+  def run([""]) do
+    # Error case: NO arguments provided
+    {:error, Constants.error_message()}
+  end
+
+  def run(_) do
+    {:error, Constants.error_message()}
   end
 end

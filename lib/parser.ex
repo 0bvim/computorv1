@@ -5,22 +5,29 @@ defmodule Parser do
   """
   def parse(expression) do
     validate_terms(expression)
-    |> split_terms()
+    # |> split_terms()
   end
 
   defp split_terms(expression) do
-    # TODO: add equals and split it in left and right hand side
+    # TODO: add equals and split it in left and right hand side with proper logic
     String.split(expression, ["+", "-", "*", "/"], trim: true)
     |> Enum.map(&String.replace(&1, " ", ""))
   end
 
-  defp validate_terms(terms) do
-    # TODO: this function should validate a valid polynomial equation
+  defp validate_terms(expression) do
+    # TODO: this function should validate a polynomial equation
     # before follow to another steps
-    if String.contains?(terms, "=") do
-      terms
-    else
-      {:error, "Input must be a valid polynomial equation."}
+    if String.contains?(expression, "=") do
+      has_valid_poly_terms =
+        split_terms(expression)
+        # just a test, need improvement
+        |> Enum.any?(&String.contains?(&1, ["x^2", "x^3", "x^4", "x"]))
+
+      if has_valid_poly_terms do
+        {:ok, "valid equation =D"}
+      else
+        {:error, "Input must be a valid polynomial equation."}
+      end
     end
   end
 end
