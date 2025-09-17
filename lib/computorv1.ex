@@ -37,10 +37,10 @@ defmodule Computorv1 do
 
   def run([""]) do
     # Error case: NO arguments provided
-    {:error, Constants.error_message()}
+    {:error, Constants.error_wrong_input()}
   end
 
   def run(_) do
-    {:error, Constants.error_message()}
+    {:error, Constants.error_wrong_input()}
   end
 end

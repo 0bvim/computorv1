@@ -10,7 +10,7 @@ defmodule Parser do
 
   defp split_terms(expression) do
     # TODO: add equals and split it in left and right hand side with proper logic
-    String.split(expression, ["+", "-", "*", "/"], trim: true)
+    String.split(expression, ["+", "-"], trim: true)
     |> Enum.map(&String.replace(&1, " ", ""))
   end
 
@@ -26,7 +26,7 @@ defmodule Parser do
       if has_valid_poly_terms do
         {:ok, "valid equation =D"}
       else
-        {:error, "Input must be a valid polynomial equation."}
+        {:error, Constants.error_invalid_poly()}
       end
     end
   end

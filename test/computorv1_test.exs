@@ -9,17 +9,17 @@ defmodule Computorv1Test do
 
     test "empty input" do
       assert Computorv1.run([]) ==
-               {:error, Constants.error_message()}
+               {:error, Constants.error_wrong_input()}
     end
 
     test "invalid empty string input" do
       assert Computorv1.run("") ==
-               {:error, Constants.error_message()}
+               {:error, Constants.error_wrong_input()}
     end
 
     test "invalid empty string in a list input" do
       assert Computorv1.run([""]) ==
-               {:error, Constants.error_message()}
+               {:error, Constants.error_wrong_input()}
     end
   end
 end
