@@ -1,4 +1,6 @@
 defmodule Computorv1 do
+  @error_wrong_input "This program requires exactly one string argument and it must be a polynomial equation."
+  
   @moduledoc """
   Documentation for `Computorv1`.
   """
@@ -29,7 +31,7 @@ defmodule Computorv1 do
   Contains the core logic of the application.
   It returns a value instead of exiting, making it easy to test.
   """
-  def run([expression]) when expression != "" do
+  def run([expression]) do
     IO.puts("Received poly equation:")
 
     Parser.parse(expression)
@@ -37,10 +39,10 @@ defmodule Computorv1 do
 
   def run([""]) do
     # Error case: NO arguments provided
-    {:error, Constants.error_wrong_input()}
+    {:error, @error_wrong_input}
   end
 
   def run(_) do
-    {:error, Constants.error_wrong_input()}
+    {:error, @error_wrong_input}
   end
 end
